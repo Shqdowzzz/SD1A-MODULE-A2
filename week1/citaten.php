@@ -1,4 +1,3 @@
-
 <?php
 
 // Thomas Edison
