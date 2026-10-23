@@ -1,52 +1,33 @@
 <?php
-$prijs = 12;
-$resultaat = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $leeftijd = (int) $_POST["leeftijd"];
+if (isset($_POST["bereken"])) {
+    $leeftijd = $_POST["leeftijd"];
+    $prijs = 12;
 
     if ($leeftijd < 0) {
-        $resultaat = "Ongeldige leeftijd.";
+    echo "Ongeldige leeftijd";
     } elseif ($leeftijd < 3) {
         $prijs = 0;
-        $resultaat = "Je mag gratis mee!";
+    echo "Jonger dan 3 jaar: gratis<br>";
     } elseif ($leeftijd <= 16) {
         $prijs = 12 * 0.5;
-        $resultaat = "Je krijgt 50% korting.";
+    echo "3 t/m 16 jaar: 50% korting<br>";
     } elseif ($leeftijd >= 65) {
         $prijs = 12 * 0.75;
-        $resultaat = "Je krijgt 25% korting.";
+    echo "Vanaf 65 jaar: 25% korting<br>";
     } else {
         $prijs = 12;
-        $resultaat = "Je betaalt de standaardprijs.";
+    echo "Overige leeftijden: €12<br>";
+    }
+
+    if ($leeftijd >= 0) {
+    echo "De prijs is €" . $prijs;
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Boottocht op de Seine</title>
-</head>
-<body>
+<form method="post">
+    Geef je leeftijd:
+    <input type="number" name="leeftijd">
 
-    <h1>Boottocht op de Seine</h1>
-
-    <form method="post">
-        <label for="leeftijd">Vul je leeftijd in:</label>
-        <input type="number" id="leeftijd" name="leeftijd"
-               min="0" required>
-        <button type="submit">Bereken prijs</button>
-    </form>
-
-    <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
-        <h2><?php echo htmlspecialchars($resultaat); ?></h2>
-
-        <?php if ((int) $_POST["leeftijd"] >= 0): ?>
-            <p>Ticketprijs: € <?php echo number_format($prijs, 2, ',', '.'); ?></p>
-        <?php endif; ?>
-    <?php endif; ?>
-
-</body>
-</html>
+    <button type="submit" name="bereken">Bereken</button>
+</form>
