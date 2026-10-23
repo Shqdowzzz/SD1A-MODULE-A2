@@ -22,8 +22,7 @@ if (isset($_POST["cars"])) {
     $car = $_POST["cars"];
 
     echo "<h3>$car</h3>";
-    echo "<img src='img/" . $car . ".webp' alt='$car afbeelding 1' width='200'>";
-    echo "<img src='img/" . $car . ".webp' alt='$car afbeelding 2' width='200'>";
+    echo "<img src='img/" . $car . ".jpg' alt='$car' width='200'>";
 }
 ?>
 
