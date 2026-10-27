@@ -1,30 +1,30 @@
 <?php
 $servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "myDB";
+$username = "root";
+$password = "";
+$dbname = "mensen";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
 }
 
-// sql to create table
-$sql = "CREATE TABLE MyGuests (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
+$sql = "SELECT * FROM personen ";
+$result = mysqli_query($conn, $sql);
 
-if ($conn->query($sql) === TRUE) {
-  echo "Table created successfully";
+echo "<table>";
+echo "<tr><th>voornaam</th><th>achternaam</th></tr>";
+
+if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+    echo "id: " . $row["id"]. " - Name: " . $row["voornaam"]. " " . $row["achternaam"]. "<br>";
+  }
 } else {
-  echo "Error creating table: " . $conn->error;
+  echo "0 results";
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>
