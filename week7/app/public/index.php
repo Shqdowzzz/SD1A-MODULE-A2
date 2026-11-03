@@ -12,6 +12,8 @@ echo "<article>";
 
 if ($controller == 'fruit') {
     fruit($conn);
+} elseif ($controller == 'delete') {
+    include '../controllers/delete.php';
 } else {
     echo "Deze pagina bestaat niet.";
 }

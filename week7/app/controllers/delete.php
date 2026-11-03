@@ -1,14 +1,12 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "fruits");
 
-if (!$con) {
-    die("Database fout");
-}
+$id = $_GET['id'] ?? '';
 
-$id = $_GET['id'];
+$sql = "DELETE FROM fruits WHERE id = ?";
+$stmt = mysqli_prepare($conn, $sql);
 
-$sql = "DELETE FROM fruits WHERE id = $id";
-mysqli_query($con, $sql);
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
 
-header("Location: fruit.php");
-exit; 
+header("Location: index.php?controller=fruit");
+exit;
