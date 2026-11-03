@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once __DIR__ . '/../core/database.php';
 require_once __DIR__ . '/../controllers/fruit.php';
 require_once __DIR__ . '/../controllers/dbquery.php';
@@ -14,6 +14,8 @@ if ($controller == 'fruit') {
     fruit($conn);
 } elseif ($controller == 'delete') {
     include '../controllers/delete.php';
+} elseif ($controller == 'toevoegen') {
+    include '../controllers/toevoegen.php';
 } else {
     echo "Deze pagina bestaat niet.";
 }
