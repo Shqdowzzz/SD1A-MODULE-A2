@@ -3,11 +3,12 @@
 require_once __DIR__ . '/../core/database.php';
 require_once __DIR__ . '/../controllers/fruit.php';
 
-$controllers = [
+    $controllers = [
     'fruit' => 'fruit',
-    'fruitshow' => 'fruitshow'
-];
-
+    'fruitshow' => 'fruitshow',
+    'fruitadd' => 'fruitadd',
+    'fruitdelete' => 'fruitdelete'
+    ];
 $controller = $_GET['controller'] ?? 'fruit';
 
 $bestaat = array_key_exists($controller, $controllers);
@@ -23,6 +24,7 @@ $bestaat = array_key_exists($controller, $controllers);
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
