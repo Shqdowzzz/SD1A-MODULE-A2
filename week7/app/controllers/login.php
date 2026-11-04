@@ -19,11 +19,7 @@ if (empty($_SESSION['login']))
 }
 else{
 
-
-
 }
-    
-
 ?>
 <h1>Inloggen</h1>
 
