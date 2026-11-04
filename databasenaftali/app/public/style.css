@@ -1,0 +1,177 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f7f4;
+    color: #26382c;
+    font-family: Arial, sans-serif;
+}
+
+.site-header, .site-footer {
+    background: white;
+    padding: 20px 5%;
+    border-bottom: 1px solid #e1e9e2;
+}
+
+.site-header, .site-header nav, .page-heading, .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand {
+    color: #28643d;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.site-header nav {
+    gap: 20px;
+}
+
+a {
+    color: #32734a;
+    text-decoration: none;
+}
+
+.main-content {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+h1 { font-size: 32px; }
+.eyebrow { color: #32734a; font-weight: bold; letter-spacing: 2px; }
+.subtitle, .result-count { color: #78877c; }
+
+.button, .search-form button {
+    background: #32734a;
+    color: white;
+    padding: 12px 17px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-secondary { background: #e5f1e7; color: #32734a; }
+.button-danger { background: #fff0ef; color: #bd4545; }
+.button-light { background: #edf0ed; color: #405448; }
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 8px;
+    border: 1px solid #e1e9e2;
+    border-radius: 10px;
+}
+
+.search-form input, .form-field input {
+    padding: 12px;
+    border: 1px solid #dce5dd;
+    border-radius: 8px;
+}
+
+.fruit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.fruit-card, .form-card, .detail-card, .empty-state {
+    background: white;
+    padding: 25px;
+    border: 1px solid #e5ece6;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #26382c0a;
+}
+
+.fruit-card h2 { margin-top: 15px; }
+
+.fruit-info div, .detail-info div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #edf1ed;
+}
+
+.fruit-info dd, .detail-info dd { font-weight: bold; }
+
+.card-actions, .form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.form-card, .detail-card {
+    max-width: 700px;
+    margin: 25px auto;
+}
+
+.form-heading { text-align: center; margin-bottom: 25px; }
+
+.fruit-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field input { width: 100%; }
+
+.form-field label { font-weight: bold; }
+
+.form-field small { color: #78877c; }
+
+.form-buttons { grid-column: 1 / -1; }
+
+.add-info-note {
+    background: #edf6ee;
+    color: #32734a;
+    padding: 14px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+}
+
+.form-error {
+    background: #fff0ef;
+    color: #bd4545;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.back-link { display: inline-block; margin-bottom: 15px; }
+
+.site-footer {
+    text-align: center;
+    color: #78877c;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+@media (max-width: 700px) {
+    .fruit-grid { grid-template-columns: 1fr 1fr; }
+    .fruit-form { grid-template-columns: 1fr; }
+    .form-buttons { grid-column: 1; }
+}
+
+@media (max-width: 480px) {
+    .fruit-grid { grid-template-columns: 1fr; }
+    .site-header, .page-heading, .toolbar { flex-wrap: wrap; }
+}
