@@ -43,6 +43,7 @@ function fruit($conn)
             <th>Color</th>
             <th>Sweetness</th>
             <th>Bekijken</th>
+            <th>Bewerken</th>
             <th>Verwijderen</th>
         </tr>";
 
@@ -56,11 +57,19 @@ function fruit($conn)
             <td>{$row['name']}</td>
             <td>{$row['color']}</td>
             <td>{$row['sweetness']}</td>
+
             <td>
                 <a href='index.php?controller=fruit&id={$row['id']}'>
                     <i class='fa-solid fa-eye'></i>
                 </a>
             </td>
+
+            <td>
+                <a href='index.php?controller=bewerk&id={$row['id']}'>
+                    <i class='fa-solid fa-pen'></i>
+                </a>
+            </td>
+
             <td>
                 <a href='index.php?controller=delete&id={$row['id']}'>
                     <i class='fa-solid fa-trash'></i>
@@ -68,7 +77,6 @@ function fruit($conn)
             </td>
         </tr>";
     }
-
     echo "</table>";
     echo "Aantal resultaten: " . $aantal;
 }

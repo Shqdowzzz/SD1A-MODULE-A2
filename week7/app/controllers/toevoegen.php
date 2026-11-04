@@ -17,9 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-
 ?>
-
 <h1>Fruit toevoegen</h1>
 
 <form method="post">
