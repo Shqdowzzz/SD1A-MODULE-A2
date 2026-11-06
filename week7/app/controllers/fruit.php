@@ -15,7 +15,7 @@ function fruit($conn)
             echo "<h1>" . htmlspecialchars($row['name']) . "</h1>";
             echo "Kleur: " . htmlspecialchars($row['color']) . "<br>";
             echo "Zoetheid: " . $row['sweetness'] . "<br>";
-            echo "Herkomst: " . htmlspecialchars($row['Herkomst']) . "<br>";
+            echo "Herkomst: " . htmlspecialchars($row['herkomst']) . "<br>";
         } else {
             echo "Fruit niet gevonden";
         }
