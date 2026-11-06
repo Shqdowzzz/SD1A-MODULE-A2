@@ -16,7 +16,7 @@ function fruit($conn)
             echo "<h1>" . htmlspecialchars($row['name']) . "</h1>";
             echo "Kleur: " . htmlspecialchars($row['color']) . "<br>";
             echo "Zoetheid: " . htmlspecialchars($row['sweetness']) . "<br>";
-            echo "Herkomst: " . htmlspecialchars($row['Herkomst']) . "<br>";
+            echo "herkomst: " . htmlspecialchars($row['herkomst']) . "<br>";
         } else {
             echo "Fruit niet gevonden";
         }
@@ -25,7 +25,6 @@ function fruit($conn)
         return;
     }
 
-    // Sorteermogelijkheden
     switch ($sort) {
         case 'id':
             $order = 'id ASC';
