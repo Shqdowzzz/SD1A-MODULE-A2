@@ -1,4 +1,12 @@
 <?php
+
+// function render($content)
+// {
+//     echo $content;
+// }
+
+$content = "";
+
 $pizzaPrijzen = [
     "margherita" => 10,
     "salami" => 12.50,
@@ -9,29 +17,30 @@ if (isset($_POST["pizza"]) && isset($pizzaPrijzen[$_POST["pizza"]])) {
     $pizza = $_POST["pizza"];
     $totaal = $pizzaPrijzen[$pizza];
 
-    echo "<h2>Jouw bestelling</h2>";
-    echo "Pizza: " . ucfirst($pizza) . "<br>";
+    $content .= "<h2>Jouw bestelling</h2>";
+    $content .= "Pizza: " . ucfirst($pizza) . "<br>";
 
     if (isset($_POST["olijven"])) {
         $totaal += 2.50;
-        echo "Extra olijven: € 2,50<br>";
+        $content .= "Extra olijven: € 2,50<br>";
     }
 
     if (isset($_POST["kaas"])) {
         $totaal += 1.50;
-        echo "Extra kaas: € 1,50<br>";
+        $content .= "Extra kaas: € 1,50<br>";
     }
 
     if (isset($_POST["bezorgen"])) {
         $totaal += 3.50;
-        echo "Bezorging: € 3,50<br>";
+        $content .= "Bezorging: € 3,50<br>";
     } else {
-        echo "Zelf ophalen<br>";
+        $content .= "Zelf ophalen<br>";
     }
 
-    echo "Totaalprijs: € " . number_format($totaal, 2, ",", ".");
+    $content .= "Totaalprijs: € " . number_format($totaal, 2, ",", ".");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -75,7 +84,7 @@ if (isset($_POST["pizza"]) && isset($pizzaPrijzen[$_POST["pizza"]])) {
     <button type="submit">Bestellen</button>
 </form>
 
+<?= $content ?>
+
 </body>
 </html>
-
-
