@@ -133,3 +133,83 @@ th {
 tr:hover {
     background: #f7faf7;
 }
+
+/* Zoek- en sorteergedeelte */
+article form {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+
+article form input,
+article form select {
+    padding: 11px 14px;
+    border: 1px solid #dce5dd;
+    border-radius: 7px;
+    background: white;
+    color: #354b3b;
+    font-size: 14px;
+}
+
+article form input {
+    flex: 1;
+    min-width: 160px;
+}
+
+article form select {
+    cursor: pointer;
+}
+
+article form button {
+    margin: 0;
+}
+
+article form a {
+    background: #287447;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+article form a:hover {
+    background: #205d39;
+}
+
+/* Fruittabel */
+article table {
+    border: none;
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px #00000008;
+}
+
+article table th {
+    padding: 15px;
+}
+
+article table td {
+    padding: 13px 15px;
+}
+
+article table a {
+    color: #287447;
+    text-decoration: none;
+}
+
+article table a:hover {
+    color: #174d2d;
+}
+
+article table i {
+    font-size: 16px;
+}
+
+article > h1 {
+    color: #287447;
+    margin-bottom: 20px;
+}
