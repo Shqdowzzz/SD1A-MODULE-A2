@@ -15,7 +15,8 @@ if (empty($_SESSION['login'])) {
     echo "<a href='?controller=login'>Inloggen</a> ";
     echo "<a href='?controller=register'>Registreren</a>";
 } else {
-    echo "<span>Ingelogd als " . htmlspecialchars($_SESSION['login']) . "</span>";
+    echo "<span>Ingelogd als " . htmlspecialchars($_SESSION['login']) . "</span> ";
+    echo "<a href='logout.php'>Uitloggen</a>";
 }
 
 echo "</nav>";
