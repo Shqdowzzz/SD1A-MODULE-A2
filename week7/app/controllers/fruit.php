@@ -1,3 +1,4 @@
+
 <?php
 include 'dbquery.php';
 
@@ -15,7 +16,7 @@ function fruit($conn)
             echo "<h1>" . htmlspecialchars($row['name']) . "</h1>";
             echo "Kleur: " . htmlspecialchars($row['color']) . "<br>";
             echo "Zoetheid: " . htmlspecialchars($row['sweetness']) . "<br>";
-            echo "Herkomst: " . htmlspecialchars($row['Herkomst']) . "<br>";
+            echo "Herkomst: " . htmlspecialchars($row['herkomst']) . "<br>";
         } else {
             echo "Fruit niet gevonden";
         }
@@ -24,24 +25,19 @@ function fruit($conn)
         return;
     }
 
-    // Sorteermogelijkheden
     switch ($sort) {
         case 'id':
             $order = 'id ASC';
             break;
-
         case 'sweetness_asc':
             $order = 'sweetness ASC';
             break;
-
         case 'sweetness_desc':
             $order = 'sweetness DESC';
             break;
-
         case 'name_desc':
             $order = 'name DESC';
             break;
-
         default:
             $order = 'name ASC';
             $sort = 'name_asc';
@@ -74,7 +70,8 @@ function fruit($conn)
         <a href='index.php?controller=toevoegen'>Toevoegen</a>
     </form>";
 
-    $result = dbquery($conn,
+    $result = dbquery(
+        $conn,
         "SELECT * FROM fruits WHERE name LIKE ? ORDER BY $order",
         "%$find%"
     );
@@ -100,27 +97,25 @@ function fruit($conn)
             <td>$id</td>
             <td>" . htmlspecialchars($row['name']) . "</td>
             <td>" . htmlspecialchars($row['color']) . "</td>
-            <td>{$row['sweetness']}</td>
+            <td>" . htmlspecialchars($row['sweetness']) . "</td>
             <td>
-    <a href='index.php?controller=fruit&id={$row['id']}'>
-        <i class='fa-solid fa-eye'></i>
-    </a>
-</td>
-
-<td>
-    <a href='index.php?controller=bewerk&id={$row['id']}'>
-        <i class='fa-solid fa-pen'></i>
-    </a>
-</td>
-
-<td>
-    <a href='index.php?controller=delete&id={$row['id']}'>
-        <i class='fa-solid fa-trash'></i>
-    </a>
-</td>
+                <a href='index.php?controller=fruit&id=$id'>
+                    <i class='fa-solid fa-eye'></i>
+                </a>
+            </td>
+            <td>
+                <a href='index.php?controller=bewerk&id=$id'>
+                    <i class='fa-solid fa-pen'></i>
+                </a>
+            </td>
+            <td>
+                <a href='index.php?controller=delete&id=$id'>
+                    <i class='fa-solid fa-trash'></i>
+                </a>
+            </td>
         </tr>";
     }
+
     echo "</table>";
     echo "Aantal resultaten: $aantal";
 }
-

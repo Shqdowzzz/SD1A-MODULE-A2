@@ -1,4 +1,3 @@
-
 <?php
 
 $id = $_GET['id'] ?? '';
@@ -8,7 +7,7 @@ if (isset($_POST['update'])) {
     $name = $_POST['name'];
     $color = $_POST['color'];
     $sweetness = $_POST['sweetness'];
-    $herkomst = $_POST['Herkomst'];
+    $herkomst = $_POST['herkomst'];
 
     $sql = "UPDATE fruits SET name=?, color=?, sweetness=?, Herkomst=? WHERE id=?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -48,7 +47,7 @@ if (!$fruit) {
     <input type="number" name="sweetness" value="<?= htmlspecialchars($fruit['sweetness']) ?>"><br>
 
     Herkomst:
-    <input name="Herkomst" value="<?= htmlspecialchars($fruit['Herkomst']) ?>"><br>
+    <input name="herkomst" value="<?= htmlspecialchars($fruit['herkomst']) ?>"><br>
 
     <button type="submit" name="update">Opslaan</button>
 </form>
