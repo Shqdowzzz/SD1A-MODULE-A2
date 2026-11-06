@@ -37,9 +37,6 @@ if (empty($_SESSION['login'])) {
 } else {
     echo "Je bent al ingelogd als " . htmlspecialchars($_SESSION['login']);
 }
-else{
-
-}
 ?>
 
 <h1>Inloggen</h1>
