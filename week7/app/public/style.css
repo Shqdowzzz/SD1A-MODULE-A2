@@ -1,0 +1,135 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7f5;
+    color: #26352c;
+}
+
+/* Navigatiebalk */
+nav {
+    background: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5ebe5;
+}
+
+nav a {
+    text-decoration: none;
+    color: #354b3b;
+    padding: 10px 15px;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background: #edf5ed;
+}
+
+nav .logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #287447;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .login {
+    background: #eaf3ec;
+    color: #287447;
+}
+
+nav .register {
+    background: #287447;
+    color: white;
+}
+
+nav .logout {
+    background: #fbeaea;
+    color: #bd4545;
+}
+
+nav span {
+    color: #526357;
+    font-size: 14px;
+}
+
+/* Pagina */
+article {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 25px;
+}
+
+/* Formulieren */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 450px;
+    box-shadow: 0 2px 10px #00000008;
+}
+
+input {
+    padding: 11px;
+    border: 1px solid #dce5dd;
+    border-radius: 6px;
+    margin: 7px 0;
+    max-width: 100%;
+}
+
+input:focus {
+    outline: 2px solid #b7d9c0;
+}
+
+button,
+input[type="submit"] {
+    background: #287447;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #205d39;
+}
+
+/* Links */
+a {
+    color: #287447;
+}
+
+/* Tabellen: bestaande gegevens en indeling behouden */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e8eee9;
+    text-align: left;
+}
+
+th {
+    background: #edf5ed;
+    color: #287447;
+}
+
+tr:hover {
+    background: #f7faf7;
+}
