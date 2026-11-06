@@ -1,4 +1,3 @@
-
 <?php
 include 'dbquery.php';
 
@@ -16,7 +15,7 @@ function fruit($conn)
             echo "<h1>" . htmlspecialchars($row['name']) . "</h1>";
             echo "Kleur: " . htmlspecialchars($row['color']) . "<br>";
             echo "Zoetheid: " . htmlspecialchars($row['sweetness']) . "<br>";
-            echo "herkomst: " . htmlspecialchars($row['herkomst']) . "<br>";
+            echo "Herkomst: " . htmlspecialchars($row['Herkomst']) . "<br>";
         } else {
             echo "Fruit niet gevonden";
         }
@@ -25,6 +24,7 @@ function fruit($conn)
         return;
     }
 
+    // Sorteermogelijkheden
     switch ($sort) {
         case 'id':
             $order = 'id ASC';
@@ -52,26 +52,29 @@ function fruit($conn)
 
     echo "<form method='GET'>
         <input type='hidden' name='controller' value='fruit'>
-
         <input name='find' value='" . htmlspecialchars($find, ENT_QUOTES) . "' placeholder='Zoek fruit'>
 
-        <select name='sort' onchange='this.form.submit()'>
-            <option value='id' " . ($sort == 'id' ? 'selected' : '') . ">ID (laag naar hoog)</option>
-            <option value='sweetness_asc' " . ($sort == 'sweetness_asc' ? 'selected' : '') . ">Zoetheid (laag naar hoog)</option>
-            <option value='sweetness_desc' " . ($sort == 'sweetness_desc' ? 'selected' : '') . ">Zoetheid (hoog naar laag)</option>
-            <option value='name_asc' " . ($sort == 'name_asc' ? 'selected' : '') . ">Naam (A-Z)</option>
-            <option value='name_desc' " . ($sort == 'name_desc' ? 'selected' : '') . ">Naam (Z-A)</option>
-        </select>
+        <select name='sort' onchange='this.form.submit()'>";
 
+    $options = [
+        'id' => 'ID (laag naar hoog)',
+        'sweetness_asc' => 'Zoetheid (laag naar hoog)',
+        'sweetness_desc' => 'Zoetheid (hoog naar laag)',
+        'name_asc' => 'Naam (A-Z)',
+        'name_desc' => 'Naam (Z-A)'
+    ];
+
+    foreach ($options as $value => $label) {
+        $selected = ($sort == $value) ? 'selected' : '';
+        echo "<option value='$value' $selected>$label</option>";
+    }
+
+    echo "</select>
         <button type='submit'>Zoeken</button>
-
-        <a href='index.php?controller=toevoegen'>
-            <i class='fa fa-plus'></i> Toevoegen
-        </a>
+        <a href='index.php?controller=toevoegen'>Toevoegen</a>
     </form>";
 
-    $result = dbquery(
-        $conn,
+    $result = dbquery($conn,
         "SELECT * FROM fruits WHERE name LIKE ? ORDER BY $order",
         "%$find%"
     );
@@ -91,33 +94,33 @@ function fruit($conn)
 
     while ($row = mysqli_fetch_assoc($result)) {
         $aantal++;
+        $id = $row['id'];
 
         echo "<tr>
-            <td>{$row['id']}</td>
+            <td>$id</td>
             <td>" . htmlspecialchars($row['name']) . "</td>
             <td>" . htmlspecialchars($row['color']) . "</td>
             <td>{$row['sweetness']}</td>
-
             <td>
-                <a href='index.php?controller=fruit&id={$row['id']}'>
-                    <i class='fa-solid fa-eye'></i>
-                </a>
-            </td>
+    <a href='index.php?controller=fruit&id={$row['id']}'>
+        <i class='fa-solid fa-eye'></i>
+    </a>
+</td>
 
-            <td>
-                <a href='index.php?controller=bewerk&id={$row['id']}'>
-                    <i class='fa-solid fa-pen'></i>
-                </a>
-            </td>
+<td>
+    <a href='index.php?controller=bewerk&id={$row['id']}'>
+        <i class='fa-solid fa-pen'></i>
+    </a>
+</td>
 
-            <td>
-                <a href='index.php?controller=delete&id={$row['id']}'>
-                    <i class='fa-solid fa-trash'></i>
-                </a>
-            </td>
+<td>
+    <a href='index.php?controller=delete&id={$row['id']}'>
+        <i class='fa-solid fa-trash'></i>
+    </a>
+</td>
         </tr>";
     }
-
     echo "</table>";
-    echo "Aantal resultaten: " . $aantal;
+    echo "Aantal resultaten: $aantal";
 }
+

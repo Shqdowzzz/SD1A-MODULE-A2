@@ -48,7 +48,7 @@ if (!$fruit) {
     <input type="number" name="sweetness" value="<?= htmlspecialchars($fruit['sweetness']) ?>"><br>
 
     Herkomst:
-    <input name="Herkomst" value="<?= htmlspecialchars($fruit['herkomst']) ?>"><br>
+    <input name="Herkomst" value="<?= htmlspecialchars($fruit['Herkomst']) ?>"><br>
 
     <button type="submit" name="update">Opslaan</button>
 </form>
